@@ -39,10 +39,8 @@
                      <span>Courses</span>
                      </a>
                      <ul class="sub">
-                        <li><a href="c.html">General</a></li>
-                        <li><a href="buttons.html">Buttons</a></li>
-                        <li><a href="panels.html">Panels</a></li>
-                        <li><a href="font_awesome.html">Font Awesome</a></li>
+                        <li><a href="c.html">Show</a></li>
+                        <li><a href="buttons.html">Add</a></li>
                      </ul>
                   </li>
                   <li class="sub-menu">
@@ -58,7 +56,7 @@
             <div class="sidebar-toggle-box">
                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <a href="index.php" class="logo"><b>MADHUR<span>OKADE</span></b></a>
+            <a href="index.php" class="logo"><b>MADHU<span>ROKADE</span></b></a>
             <div class="top-menu">
                <ul class="nav pull-right top-menu">
                   <?php
@@ -77,28 +75,44 @@
                <?php 
                   $sql = "SELECT * FROM user";
                   $results = mysqli_query($conn,$sql);
+                  
                   ?>
-                  <div id="search-bar">
-          <label>Search :</label>
-          <input type="text" id="search" name="search"autocomplete="off">
-        </div>
-               <table>
+               <table class="table table-borderless align-middle mb-0 bg-white">
                   <thead class="bg-light">
                      <tr>
-                       
+                        <th>ID</th>
                         <th>Name</th>
-                    
+                        <th>Contact</th>
+                        <th>Status</th>
                      </tr>
                   </thead>
                   <tbody>
                      <?php while($row = mysqli_fetch_assoc($results)):?>
                      <tr>
-                       
-                        <td id="table-data">
-                           
+                        <td>
+                           <div class="d-flex align-items-center">
+                              <div class="ms-3">
+                                 <p class="fw-bold mb-1"><?php echo $row['id']?></p>
+                              </div>
+                           </div>
                         </td>
-                       
-                   
+                        <td>
+                           <p class="fw-normal mb-1"><?php echo $row['name']?></p>
+                        </td>
+                        <td>
+                           <p class="fw-normal mb-1"><?php echo $row['contact']?></p>
+                        </td>
+                        <td>	<?php 
+                           if($row['status']=="1")
+                           
+                              echo
+                           "<a href=deactivate.php?id=".$row['id']." class='btn btn-danger'>Deactivate</a>";
+                           else
+                              echo
+                           "<a href=activate.php?id=".$row['id']." class='btn btn-success'>Activate</a>";
+                           ?>
+                           </td>
+                     </tr>
                      <?php endwhile;?>
                   </tbody>
                </table>
@@ -106,46 +120,10 @@
             </section>
          </section>
       </section>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    // Load Table Records
-    function loadTable(){
-     
-      $.ajax({
-        url : "ajax-load.php",
-        type : "POST",
-        success : function(data){
-          $("#table-data").html(data);
-        }
-      });
-    }
-    loadTable(); // Load Table Records on Page Load
-
-  
-
-    // Live Search
-     $("#search").on("keyup",function(){
-     
-       var search_term = $(this).val();
-
-       $.ajax({
-         url: "ajax-search.php",
-         type: "POST",
-         data : {search:search_term },
-         success: function(data) {
-           $("#table-data").html(data);
-         }
-       });
-     });
-  });
-</script>
-
       <script src="js/jquery/jquery.min.js"></script>
       <script src="css/bootstrap/js/bootstrap.min.js"></script>
       <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
       <script src="js/jquery.scrollTo.min.js"></script>
       <script src="js/common-scripts.js"></script>
-    
    </body>
 </html>
