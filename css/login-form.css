@@ -1,0 +1,75 @@
+body{
+    font-family: "Lato", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+    color: gray;
+    background: #38B0E4;
+}
+
+.login-section {
+    height: 100vh;
+    align-items: center;
+    display: flex;
+}
+.wrap {
+    width: 100%;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+}
+
+.login-wrapper {
+    position: relative;
+    background: #fff;
+}
+.welcome-image, .login-wrapper {
+    width: 50%;
+}
+.welcome-image img{
+    width: 100%;
+}
+.form-group {
+    position: relative;
+}
+.form-control {
+    height: 48px;
+    background: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-size: 16px;
+    border-radius: 50px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 1rem;
+}
+.sign-in-btn {
+    background: #38b0e4;
+    color: #fff;
+}
+
+.form-group .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    font-weight: 700;
+}
+
+@media (max-width: 991.98px){
+.welcome-image, .login-wrapper {
+    width: 100%;
+}
+
+.login-section {
+    height: fit-content;
+    padding: 3em 0;
+}
+
+}
